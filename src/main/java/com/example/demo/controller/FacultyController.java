@@ -33,7 +33,7 @@ public class FacultyController {
 			return new ResponseEntity<>(facultys ,HttpStatus.OK);
 			
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
@@ -50,7 +50,7 @@ public class FacultyController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
@@ -63,10 +63,10 @@ public class FacultyController {
 			if(faculty.isPresent()) {
 				return new ResponseEntity<>(faculty,HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("faculty not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Faculty Not Found.",HttpStatus.BAD_REQUEST);
 			}
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -85,11 +85,11 @@ public class FacultyController {
 			return new ResponseEntity<>(facultyEdit,HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>("faculty not found",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Faculty Not Found.",HttpStatus.BAD_REQUEST);
 		}
 	
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 }
 		
@@ -102,13 +102,13 @@ public class FacultyController {
 			if (faculty.isPresent()) {
 			
 				facultyRepository.delete(faculty.get());
-				return new ResponseEntity<>("Delete Success",HttpStatus.OK);
+				return new ResponseEntity<>("Delete Faculty Success.",HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("faculty not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Faculty Not Found.",HttpStatus.BAD_REQUEST);
 		}
 		}catch (Exception e) {
 			System.out.print(e.getMessage());
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

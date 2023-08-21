@@ -32,7 +32,7 @@ public class LocationController {
 			return new ResponseEntity<>(locations ,HttpStatus.OK);
 			
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
@@ -49,7 +49,7 @@ public class LocationController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
@@ -62,10 +62,10 @@ public class LocationController {
 			if(location.isPresent()) {
 				return new ResponseEntity<>(location,HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("location not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Location Not Found.",HttpStatus.BAD_REQUEST);
 			}
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -85,11 +85,11 @@ public class LocationController {
 			return new ResponseEntity<>(locationEdit,HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>("Location not found",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Location Not Found.",HttpStatus.BAD_REQUEST);
 		}
 	
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 }
 		
@@ -102,13 +102,13 @@ public class LocationController {
 			if (location.isPresent()) {
 			
 				locationRepository.delete(location.get());
-				return new ResponseEntity<>("Delete Success",HttpStatus.OK);
+				return new ResponseEntity<>("Delete Location Success",HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("location not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Location Not Found.",HttpStatus.BAD_REQUEST);
 		}
 		}catch (Exception e) {
 			System.out.print(e.getMessage());
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

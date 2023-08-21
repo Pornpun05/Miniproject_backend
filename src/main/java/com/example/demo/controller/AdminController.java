@@ -23,8 +23,7 @@ public class AdminController {
 	@Autowired
 	AdminRepository adminRepository;
 	
-	
-	
+
 	@GetMapping("/admin")
 	public ResponseEntity<Object>  getAdmin(){
 		try {
@@ -62,10 +61,10 @@ public class AdminController {
 			if(admin.isPresent()) {
 				return new ResponseEntity<>(admin,HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("Admin not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Admin Not Found",HttpStatus.BAD_REQUEST);
 			}
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -85,13 +84,13 @@ public class AdminController {
 			return new ResponseEntity<>(adminEdit,HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>("Admin not found",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Admin Not Found.",HttpStatus.BAD_REQUEST);
 		}
 	
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-}
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
+	    }
+    }
 		
 	
 	@DeleteMapping("admin/{adminId}")
@@ -102,13 +101,30 @@ public class AdminController {
 			if (admin.isPresent()) {
 			
 				adminRepository.delete(admin.get());
-				return new ResponseEntity<>("Delete Success",HttpStatus.OK);
+				return new ResponseEntity<>("Delete Admin Success.",HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("Admin not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Admin Not Found.",HttpStatus.BAD_REQUEST);
 		}
 		}catch (Exception e) {
 			System.out.print(e.getMessage());
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+	
+	  @PostMapping("/admin/login")  
+	    public ResponseEntity<Object> loginAdmin(@RequestBody Admin body) {
+	        try {
+	            Optional<Admin> adminFound = adminRepository.findByAdminUsername(body.getAdminUsername());
+
+	            if (adminFound.isPresent() && adminFound.get().getAdminPassword().equals(body.getAdminPassword())) {
+	                adminFound.get().setAdminPassword(null);
+	                return new ResponseEntity<>(adminFound, HttpStatus.OK);
+	            } else {
+	                return new ResponseEntity<>("Invalid Credentials.", HttpStatus.UNAUTHORIZED);
+	            }
+	        } catch (Exception e) {
+	            System.out.println(e.getMessage());
+	            return new ResponseEntity<>("Internal Server Error.", HttpStatus.INTERNAL_SERVER_ERROR);
+	        }
+	    }
 }

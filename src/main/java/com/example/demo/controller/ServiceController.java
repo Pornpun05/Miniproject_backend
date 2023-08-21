@@ -33,7 +33,7 @@ public class ServiceController {
 			return new ResponseEntity<>(services ,HttpStatus.OK);
 			
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
@@ -50,7 +50,7 @@ public class ServiceController {
 
 		} catch (Exception e) {
 			e.printStackTrace();
-			return new ResponseEntity<>("Internal server error", HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.", HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 		
 	}
@@ -63,10 +63,10 @@ public class ServiceController {
 			if(service.isPresent()) {
 				return new ResponseEntity<>(service,HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("service not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Service Not Found.",HttpStatus.BAD_REQUEST);
 			}
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
@@ -84,11 +84,11 @@ public class ServiceController {
 			return new ResponseEntity<>(serviceEdit,HttpStatus.OK);
 		}
 		else {
-			return new ResponseEntity<>("service not found",HttpStatus.BAD_REQUEST);
+			return new ResponseEntity<>("Service Not Found.",HttpStatus.BAD_REQUEST);
 		}
 	
 		}catch (Exception e) {
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 }
 		
@@ -101,13 +101,13 @@ public class ServiceController {
 			if (service.isPresent()) {
 			
 				serviceRepository.delete(service.get());
-				return new ResponseEntity<>("Delete Success",HttpStatus.OK);
+				return new ResponseEntity<>("Delete Service Success.",HttpStatus.OK);
 			}else {
-				return new ResponseEntity<>("service not found",HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>("Service Not Found.",HttpStatus.BAD_REQUEST);
 		}
 		}catch (Exception e) {
 			System.out.print(e.getMessage());
-			return new ResponseEntity<>("Internal server error",HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity<>("Internal Server Error.",HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

@@ -15,75 +15,50 @@ public class Admin {
 	private Integer adminId;	
 	private String adminfirstName;
 	private String adminlastName;
-	private Integer adminpassword;
-	
-	
-	
-	public Admin(Integer adminId, String adminfirstName, String adminlastName, Integer adminpassword) {
-		super();
-		this.adminId = adminId;
-		this.adminfirstName = adminfirstName;
-		this.adminlastName = adminlastName;
-		this.adminpassword = adminpassword;
-	}
+	private String adminUsername;
+	private Integer adminPassword;
 	
 	public Admin() {
 		super();
 	}
-
-
-
+	public Admin(Integer adminId, String adminfirstName, String adminlastName, String adminUsername,
+			Integer adminPassword) {
+		super();
+		this.adminId = adminId;
+		this.adminfirstName = adminfirstName;
+		this.adminlastName = adminlastName;
+		this.adminUsername = adminUsername;
+		this.adminPassword = adminPassword;
+	}
 	public Integer getAdminId() {
 		return adminId;
 	}
-
-
-
 	public void setAdminId(Integer adminId) {
 		this.adminId = adminId;
 	}
-
-
-
 	public String getAdminfirstName() {
 		return adminfirstName;
 	}
-
-
-
 	public void setAdminfirstName(String adminfirstName) {
 		this.adminfirstName = adminfirstName;
 	}
-
-
-
 	public String getAdminlastName() {
 		return adminlastName;
 	}
-
-
-
 	public void setAdminlastName(String adminlastName) {
 		this.adminlastName = adminlastName;
 	}
-
-
-
-	public Integer getAdminpassword() {
-		return adminpassword;
+	public String getAdminUsername() {
+		return adminUsername;
 	}
-
-
-
-	public void setAdminpassword(Integer adminpassword) {
-		this.adminpassword = adminpassword;
+	public void setAdminUsername(String adminUsername) {
+		this.adminUsername = adminUsername;
+	}
+	public Integer getAdminPassword() {
+		return adminPassword;
+	}
+	public void setAdminPassword(Integer adminPassword) {
+		this.adminPassword = adminPassword;
 	}
 	
-	
-	
-	
-	
-	
-	
-
 }
