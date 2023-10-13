@@ -11,7 +11,6 @@ import com.example.demo.model.Picture;
 
 @Repository
 public interface PictureRepository extends JpaRepository<Picture, Integer>{
-	
 	@Query("SELECT p FROM Picture p ")
 	List<Picture> findAllPicture();
 

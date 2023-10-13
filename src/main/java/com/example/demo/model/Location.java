@@ -1,10 +1,12 @@
 package com.example.demo.model;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.Lob;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
@@ -19,9 +21,10 @@ public class Location {
 	private String locationName;
 	private String locationDescription;
 	
-	@ManyToOne
-	@JoinColumn(name = "adminId")
-	 private Admin admin;
+	@Lob
+	@Column(length = 3048576)
+	private byte[] locationPicture;
+	
 	
 	@ManyToOne
 	@JoinColumn(name = "facultyId")
@@ -33,12 +36,13 @@ public class Location {
 	}
 
 
-	public Location(Integer locationId, String locationName, String locationDescription, Admin admin, Faculty faculty) {
+	public Location(Integer locationId, String locationName, String locationDescription, byte[] locationPicture,
+			Faculty faculty) {
 		super();
 		this.locationId = locationId;
 		this.locationName = locationName;
 		this.locationDescription = locationDescription;
-		this.admin = admin;
+		this.locationPicture = locationPicture;
 		this.faculty = faculty;
 	}
 
@@ -73,13 +77,13 @@ public class Location {
 	}
 
 
-	public Admin getAdmin() {
-		return admin;
+	public byte[] getLocationPicture() {
+		return locationPicture;
 	}
 
 
-	public void setAdmin(Admin admin) {
-		this.admin = admin;
+	public void setLocationPicture(byte[] locationPicture) {
+		this.locationPicture = locationPicture;
 	}
 
 
@@ -92,9 +96,6 @@ public class Location {
 		this.faculty = faculty;
 	}
 	
-	
-
-
 	
 
 }

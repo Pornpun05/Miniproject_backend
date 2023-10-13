@@ -24,7 +24,6 @@ public class Picture {
 	@Column(length = 3048576)
 	private byte[] picture;
 
-	
 	@ManyToOne
 	@JoinColumn(name = "locationId")
 	private Location location;
@@ -72,9 +71,6 @@ public class Picture {
 	public void setLocation(Location location) {
 		this.location = location;
 	}
-
-	 
-	
 
 	
 }
